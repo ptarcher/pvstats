@@ -1,0 +1,4 @@
+tags
+*.pyc
+pvstats.conf
+dist/

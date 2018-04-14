@@ -1,0 +1,26 @@
+{
+  "inverter":{
+    "model":"sungrow-sg5ktl",
+    "host":"TODO",
+    "port":502
+  },
+  "reports":[
+    { "type": "pvoutput",
+      "host":"pvoutput.org",
+      "key":"TODO",
+      "system_id":"TODO"
+    },
+    { "type": "influxdb",
+      "host":"127.0.0.1",
+      "port":8086,
+      "user":"user",
+      "password":"password",
+      "db":"pvstats",
+      "ssl":"1",
+      "verify_ssl":"0"
+    }
+  ],
+
+  "sample_period":300,
+  "verbose":1
+}
