@@ -95,7 +95,7 @@ See also the list of [contributors](https://github.com/ptarcher/pvstats/contribu
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE.txt](LICENSE.txt) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
