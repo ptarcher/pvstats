@@ -20,11 +20,13 @@ from pymodbus.constants import Defaults
 from pymodbus.client.sync import ModbusTcpClient
 from pymodbus.transaction import ModbusSocketFramer
 
-class BasePVInverter(ModbusTcpClient):
-  def __init__(self, host='127.0.0.1', port=Defaults.Port,
-               framer=ModbusSocketFramer, **kwargs):
-    super(BasePVInverter, self).__init__(host, port, framer, **kwargs)
+class BasePVInverter(object):
+  def __init__(self):
     self.registers = {}
+
+  def connect(self): pass
+  def read(self): pass
+  def close(self): pass
 
 #-----------------
 # Exported symbols

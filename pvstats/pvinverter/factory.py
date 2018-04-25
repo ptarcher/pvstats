@@ -22,7 +22,7 @@ from pymodbus.constants import Defaults
 from pymodbus.client.sync import ModbusTcpClient
 from pymodbus.transaction import ModbusSocketFramer
 
-from pvstats.pvinverter.sungrow_sg5ktl import PVInverter_SunGrow
+from pvstats.pvinverter.sungrow_sg5ktl import PVInverter_SunGrow, PVInverter_SunGrowRTU
 from pvstats.pvinverter.base import BasePVInverter
 
 class PVInverter_Test(BasePVInverter):
@@ -42,8 +42,11 @@ class PVInverter_Test(BasePVInverter):
 def PVInverterFactory(model, cfg):
   if (model == "test"):
     return PVInverter_Test()
+  elif (model == "sungrow-sg5ktl" and cfg['mode'] == 'rtu'):
+    return PVInverter_SunGrowRTU(cfg)
   elif (model == "sungrow-sg5ktl"):
-    return PVInverter_SunGrow(cfg, timeout=3, RetryOnEmpty=True, retries=3)
+    # Assume TCP
+    return PVInverter_SunGrow(cfg)
   else:
     raise ValueError("Unable to find PVInverter for {}".format(model))
 

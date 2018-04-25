@@ -16,10 +16,15 @@
 
 from pvstats.pvinverter.base import BasePVInverter
 
+from pymodbus.constants import Defaults
 from pymodbus.client.sync import ModbusTcpClient
+from pymodbus.client.sync import ModbusSerialClient
+from pymodbus.transaction import ModbusSocketFramer
 from pymodbus.exceptions import ModbusIOException
 from pymodbus.payload import BinaryPayloadDecoder
 from datetime import datetime
+
+import serial.rs485
 
 from decimal import *
 getcontext().prec = 9
@@ -54,7 +59,16 @@ _register_map = {
 
 class PVInverter_SunGrow(BasePVInverter):
   def __init__(self, cfg, **kwargs):
-    super(PVInverter_SunGrow, self).__init__(cfg['host'], cfg['port'], **kwargs)
+    super(PVInverter_SunGrow, self).__init__()
+    self.client = ModbusTcpClient(cfg['host'],              port=cfg['port'],
+                                  framer=ModbusSocketFrame, timeout=3,
+                                  RetryOnEmpty=True,        retries=3)
+
+  def connect(self):
+    self.client.connect()
+
+  def close(self):
+    self.client.close()
 
   def read(self):
     """Reads the PV inverters status"""
@@ -78,11 +92,11 @@ class PVInverter_SunGrow(BasePVInverter):
   def _load_registers(self,func,start,count=100):
     try:
       if func == 'input':
-        rq = self.read_input_registers(start, count, unit=0x01)
+        rq = self.client.read_input_registers(start, count, unit=0x01)
       elif func == 'holding':
         # Holding registers need an offset
         start = start - 1
-        rq = self.read_holding_registers(start, count, unit=0x01)
+        rq = self.client.read_holding_registers(start, count, unit=0x01)
       else:
         raise Exception("Unknown register type: {}".format(type))
 
@@ -105,11 +119,29 @@ class PVInverter_SunGrow(BasePVInverter):
       _logger.debug("{}, start: {}, count: {}".format(type, start, count))
       raise
 
+class PVInverter_SunGrowRTU(BasePVInverter):
+  def __init__(self, cfg, **kwargs):
+    super(PVInverter_SunGrowRTU, self).__init__()
+
+    # Configure the Modbus Remote Terminal Unit settings
+    self.client = ModbusSerialClient(method='rtu', port=cfg['dev'], timeout=0.5,
+                                     stopbits = 1, bytesize =8, parity='N', baudrate=9600)
+
+  def connect(self):
+    # Connect then configure the port
+    if self.client.connect():
+      # Configure the RS485 port
+      rs485_mode = serial.rs485.RS485Settings(delay_before_tx = 0, delay_before_rx = 0,
+                                              rts_level_for_tx=True, rts_level_for_rx=False,
+                                              loopback=False)
+      self.client.socket.rs485_mode = rs485_mode
+
+
 #-----------------
 # Exported symbols
 #-----------------
 __all__ = [
-  "PVInverter_SunGrow"
+  "PVInverter_SunGrow", "PVInverter_SunGrowRTU"
 ]
 
 # vim: set expandtab ts=2 sw=2:
