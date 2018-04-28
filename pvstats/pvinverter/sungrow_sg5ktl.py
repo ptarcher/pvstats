@@ -60,9 +60,9 @@ _register_map = {
 class PVInverter_SunGrow(BasePVInverter):
   def __init__(self, cfg, **kwargs):
     super(PVInverter_SunGrow, self).__init__()
-    self.client = ModbusTcpClient(cfg['host'],              port=cfg['port'],
-                                  framer=ModbusSocketFrame, timeout=3,
-                                  RetryOnEmpty=True,        retries=3)
+    self.client = ModbusTcpClient(cfg['host'],               port=cfg['port'],
+                                  framer=ModbusSocketFramer, timeout=3,
+                                  RetryOnEmpty=True,         retries=3)
 
   def connect(self):
     self.client.connect()
