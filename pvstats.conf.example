@@ -1,6 +1,7 @@
 {
   "inverter":{
     "model":"sungrow-sg5ktl",
+    "mode":"tcp",
     "host":"TODO",
     "port":502
   },
