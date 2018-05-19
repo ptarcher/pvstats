@@ -17,6 +17,7 @@
 # limitations under the License.
 
 from datetime import datetime
+from decimal import *
 
 from pymodbus.constants import Defaults
 from pymodbus.client.sync import ModbusTcpClient
@@ -25,17 +26,19 @@ from pymodbus.transaction import ModbusSocketFramer
 from pvstats.pvinverter.sungrow_sg5ktl import PVInverter_SunGrow, PVInverter_SunGrowRTU
 from pvstats.pvinverter.base import BasePVInverter
 
-class PVInverter_Test(BasePVInverter):
-  def __init__(self):
-    self.registers = {'timestamp':datetime.now(),
-                      'daily_pv_power':2300,
-                      'total_pv_power':2100,
-                      'internal_temp': 41.2,
-                      'pv1_voltage':213,
-                      'pv2_voltage':125}
+from random import randint
 
+class PVInverter_Test(BasePVInverter):
+  def __init__(self): pass
   def connect(self): pass
-  def read(self): pass
+  def read(self):
+    self.registers = {'timestamp':datetime.now(),
+                      'daily_pv_power':Decimal('2300') + randint(0,1000),
+                      'total_pv_power':Decimal('2100') + randint(0,1000),
+                      'internal_temp': Decimal('41.2') + randint(0,10),
+                      'pv1_voltage':   Decimal('213')  + randint(0,30),
+                      'pv2_voltage':   Decimal('125')  + randint(0,20)}
+
   def close(self): pass
 
 # Factory class for the PV Inverter
