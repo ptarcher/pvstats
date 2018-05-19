@@ -8,6 +8,7 @@
   "reports":[
     { "type": "pvoutput",
       "host":"pvoutput.org",
+      "rate_limit":"300",
       "key":"TODO",
       "system_id":"TODO"
     },
@@ -22,6 +23,6 @@
     }
   ],
 
-  "sample_period":300,
+  "sample_period":10,
   "verbose":1
 }

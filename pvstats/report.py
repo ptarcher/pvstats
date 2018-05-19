@@ -16,6 +16,7 @@
 
 import abc
 import json
+import time
 
 from influxdb import InfluxDBClient
 from pvstats.pvoutput import PVOutputClient
@@ -32,16 +33,53 @@ class BasePVOutput():
 
 class PVReport_pvoutput(BasePVOutput):
   def __init__(self, cfg):
+    self.samples     = []
+    self.rate_limit  = cfg['rate_limit']
+    self.last_status = time.time()
+
     self.client = PVOutputClient(cfg['host'],
                                  cfg['key'],
                                  cfg['system_id'])
 
   def publish(self, data):
-    self.client.add_status(data['timestamp'].strftime("%Y%m%d"), data['timestamp'].strftime("%H:%M"),
-                           energy_generation = data['daily_pv_power'],
-                           power_generation  = data['total_pv_power'],
-                           temperature       = data['internal_temp'],
-                           voltage           = (data['pv1_voltage'] + data['pv2_voltage']))
+    sample = {'date':             data['timestamp'].strftime("%Y%m%d"),
+              'time':             data['timestamp'].strftime("%H:%M"),
+              'energy_generation':data['daily_pv_power'],
+              'power_generation': data['total_pv_power'],
+              'temperature':      data['internal_temp'],
+              'voltage':         (data['pv1_voltage'] + data['pv2_voltage'])}
+
+    if (time.time() - self.last_status > 3*self.rate_limit):
+      # If the last successful sample was a long time ago, flush the samples
+      self.samples     = []
+
+
+    self.samples.append(sample)
+
+    if (time.time() - self.last_status > self.rate_limit):
+      # Last result: Date, Time & EnergyGeneration
+      # Average:     PowerGeneration, Temperature & Voltage
+      # Note: This asssumes all samples are sampled at the same sample rate
+      d = {
+        'date'             :self.samples[-1]['date'],
+        'time'             :self.samples[-1]['time'],
+        'energy_generation':self.samples[-1]['energy_generation'],
+        'power_generation' :sum(s['power_generation'] for s in self.samples) / len(self.samples),
+        'temperature'      :sum(s['temperature']      for s in self.samples) / len(self.samples),
+        'voltage'          :sum(s['voltage']          for s in self.samples) / len(self.samples)
+      }
+
+      # Clear out the old results
+      self.last_status = time.time()
+      self.samples     = []
+
+      # Send the new result to the server
+      self.client.add_status(d['date'], d['time'],
+                             energy_generation = d['energy_generation'],
+                             power_generation  = d['power_generation'],
+                             temperature       = d['temperature'],
+                             voltage           = d['voltage'])
+
 
 
 
