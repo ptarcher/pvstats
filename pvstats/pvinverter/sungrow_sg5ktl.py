@@ -119,9 +119,9 @@ class PVInverter_SunGrow(BasePVInverter):
       _logger.debug("{}, start: {}, count: {}".format(type, start, count))
       raise
 
-class PVInverter_SunGrowRTU(BasePVInverter):
+class PVInverter_SunGrowRTU(PVInverter_SunGrow):
   def __init__(self, cfg, **kwargs):
-    super(PVInverter_SunGrowRTU, self).__init__()
+    super(PVInverter_SunGrow, self).__init__()
 
     # Configure the Modbus Remote Terminal Unit settings
     self.client = ModbusSerialClient(method='rtu', port=cfg['dev'], timeout=0.5,
@@ -130,11 +130,11 @@ class PVInverter_SunGrowRTU(BasePVInverter):
   def connect(self):
     # Connect then configure the port
     if self.client.connect():
-      # Configure the RS485 port
-      rs485_mode = serial.rs485.RS485Settings(delay_before_tx = 0, delay_before_rx = 0,
-                                              rts_level_for_tx=True, rts_level_for_rx=False,
-                                              loopback=False)
-      self.client.socket.rs485_mode = rs485_mode
+      # Configure the RS485 port - This seems not needed
+      #rs485_mode = serial.rs485.RS485Settings(delay_before_tx = 0, delay_before_rx = 0,
+      #                                        rts_level_for_tx=True, rts_level_for_rx=False,
+      #                                        loopback=False)
+      #self.client.socket.rs485_mode = rs485_mode
 
 
 #-----------------
