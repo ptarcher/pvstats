@@ -20,6 +20,15 @@
       "db":"pvstats",
       "ssl":"1",
       "verify_ssl":"0"
+    },
+    { "type":"mqtt",
+      "host":"mqtt.example.com",
+      "port":1083,
+      "tls":false,
+      "user":"user",
+      "password":"password",
+      "topic":"/solar/inverter/status",
+      "qos":2
     }
   ],
 
