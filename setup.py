@@ -52,6 +52,7 @@ setup(name='pvstats',
       install_requires=[
         'pymodbus',
         'influxdb',
+        'paho-mqtt',
         'pyserial >= 2.6'
       ],
       data_files=[

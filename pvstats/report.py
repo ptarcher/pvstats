@@ -21,6 +21,10 @@ import time
 from influxdb import InfluxDBClient
 from pvstats.pvoutput import PVOutputClient
 
+#import context
+import json
+import paho.mqtt.client as mqtt
+
 import logging
 logging.basicConfig()
 _log = logging.getLogger()
@@ -81,7 +85,29 @@ class PVReport_pvoutput(BasePVOutput):
                              voltage           = d['voltage'])
 
 
+class PVReport_mqtt(BasePVOutput):
+  def __init__(self, cfg):
+    self.client = mqtt.Client()
 
+    # Turn on user/password login
+    if cfg['user']:
+      self.client.username_pw_set(cfg['user'],cfg['password'])
+
+    # Turn on TLS encryption
+    if cfg['tls']:
+      self.client.tls_set()
+
+    # Connect and run the call back functions
+    self.client.connect(cfg['host'],cfg['port'])
+    self.client.loop_start()
+
+    # Save config data for later
+    self.topic = cfg['topic']
+    self.qos   = cfg['qos']
+
+  def publish(self, data):
+    d = json.dumps(data, sort_keys=True, indent=2, separators=(',', ': '),default=str)
+    self.client.publish(self.topic, d, qos=self.qos)
 
 class PVReport_influxdb(BasePVOutput):
   def __init__(self, cfg):
@@ -118,6 +144,8 @@ def PVReportFactory(cfg):
     return PVReport_test(cfg)
   elif (cfg['type'] == "pvoutput"):
     return PVReport_pvoutput(cfg)
+  elif (cfg['type'] == "mqtt"):
+    return PVReport_mqtt(cfg)
   elif (cfg['type'] == "influxdb"):
     return PVReport_influxdb(cfg)
   else:

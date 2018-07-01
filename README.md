@@ -12,9 +12,9 @@ Currently supported inverters include:
 
 Currently supported reporting methods include:
 * PVOutput.org
+* MQTT
 * InfluxDB
 * TODO: dweet.io
-* TODO: MQTT
 
 ## Getting Started
 
@@ -30,7 +30,7 @@ pip install pvstats
 
 ### Running
 
-First modify `pvstats.conf` with your inverter settings, and also pvoutput.org or InfluxDB settings
+First modify `pvstats.conf` with your inverter settings, and also pvoutput.org, MQTT or InfluxDB settings
 
 ```
 /usr/bin/pvstats -f pvstats.conf
