@@ -129,12 +129,13 @@ class PVInverter_SunGrowRTU(PVInverter_SunGrow):
 
   def connect(self):
     # Connect then configure the port
-    if self.client.connect():
-      # Configure the RS485 port - This seems not needed
-      #rs485_mode = serial.rs485.RS485Settings(delay_before_tx = 0, delay_before_rx = 0,
-      #                                        rts_level_for_tx=True, rts_level_for_rx=False,
-      #                                        loopback=False)
-      #self.client.socket.rs485_mode = rs485_mode
+    self.client.connect()
+
+    # Configure the RS485 port - This seems not needed
+    #rs485_mode = serial.rs485.RS485Settings(delay_before_tx = 0, delay_before_rx = 0,
+    #                                        rts_level_for_tx=True, rts_level_for_rx=False,
+    #                                        loopback=False)
+    #self.client.socket.rs485_mode = rs485_mode
 
 
 #-----------------
