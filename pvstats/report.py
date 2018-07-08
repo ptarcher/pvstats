@@ -38,7 +38,7 @@ class BasePVOutput():
 class PVReport_pvoutput(BasePVOutput):
   def __init__(self, cfg):
     self.samples     = []
-    self.rate_limit  = cfg['rate_limit']
+    self.rate_limit  = int(cfg['rate_limit'])
     self.last_status = time.time()
 
     self.client = PVOutputClient(cfg['host'],
