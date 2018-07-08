@@ -2,18 +2,20 @@
   "inverter":{
     "model":"sungrow-sg5ktl",
     "mode":"tcp",
-    "host":"TODO",
+    "host":"sungrow.example.com",
     "port":502
   },
   "reports":[
-    { "type": "pvoutput",
+    {
+      "type": "pvoutput",
       "host":"pvoutput.org",
       "rate_limit":"300",
       "key":"TODO",
       "system_id":"TODO"
     },
-    { "type": "influxdb",
-      "host":"127.0.0.1",
+    {
+      "type": "influxdb",
+      "host":"influxdb.example.com",
       "port":8086,
       "user":"user",
       "password":"password",
@@ -21,7 +23,8 @@
       "ssl":"1",
       "verify_ssl":"0"
     },
-    { "type":"mqtt",
+    {
+      "type":"mqtt",
       "host":"mqtt.example.com",
       "port":1083,
       "tls":false,
