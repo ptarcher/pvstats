@@ -56,7 +56,9 @@ def main():
   for rpt in cfg['reports']:
     _log.debug(json.dumps(rpt, sort_keys=True,
                          indent=4, separators=(',', ': '),default=str))
-    reports.append(PVReportFactory(rpt))
+    r = PVReportFactory(rpt)
+    if r != None:
+      reports.append(r)
 
   while True:
     tstart = datetime.now()

@@ -149,7 +149,8 @@ def PVReportFactory(cfg):
   elif (cfg['type'] == "influxdb"):
     return PVReport_influxdb(cfg)
   else:
-    raise ValueError("Unable to find PVReport for {}".format(cfg['type']))
+#    raise ValueError("Unable to find PVReport for {}".format(cfg['type']))
+    _log.debug("Unable to find PVReport for {}".format(cfg['type']))
 
 
 #-----------------

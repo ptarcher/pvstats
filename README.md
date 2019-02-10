@@ -6,7 +6,8 @@ PVStats is a tool used to connect to your inverter using Modbus TCP,
 scan for various power figures, and then upload the data to various report services.
 
 Currently supported inverters include:
-* Sungrow SG5KTL
+* Sungrow SG5KTL (TCP and RS485)
+* Fronius (need to double check models)
 * TODO: Sungrow SH5K
 * TODO: SMA Sunny Boy
 
