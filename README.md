@@ -7,7 +7,8 @@ scan for various power figures, and then upload the data to various report servi
 
 Currently supported inverters include:
 * Sungrow SG5KTL (TCP and RS485)
-* Fronius (need to double check models)
+* Fronius (WiFi)
+* SolaX X1-5.0-T (WiFi)
 * TODO: Sungrow SH5K
 * TODO: SMA Sunny Boy
 
