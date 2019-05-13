@@ -24,6 +24,7 @@ from pymodbus.client.sync import ModbusTcpClient
 from pymodbus.transaction import ModbusSocketFramer
 
 from pvstats.pvinverter.fronius import PVInverter_Fronius
+from pvstats.pvinverter.solax import PVInverter_Solax
 from pvstats.pvinverter.sungrow_sg5ktl import PVInverter_SunGrow, PVInverter_SunGrowRTU
 from pvstats.pvinverter.base import BasePVInverter
 
@@ -54,6 +55,9 @@ def PVInverterFactory(model, cfg):
   elif (model == "fronius"):
     # Assume TCP
     return PVInverter_Fronius(cfg)
+  elif (model == "solax"):
+    # Assume TCP
+    return PVInverter_Solax(cfg)
   else:
     raise ValueError("Unable to find PVInverter for {}".format(model))
 
