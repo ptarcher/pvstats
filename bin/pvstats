@@ -18,6 +18,7 @@ import time
 import json
 from datetime import datetime
 from sys import stdout
+import argparse
 
 from pvstats.pvinverter.factory import PVInverterFactory
 from pvstats.report import PVReportFactory
@@ -31,11 +32,10 @@ _log = logging.getLogger()
 
 
 # Load the configuration
-def load_config():
-  with open('/etc/pvstats.conf') as f:
+def load_config(location):
+  with open(location) as f:
     cfg = json.load(f)
 
-  # TODO: Possibly add support for overriding the config via command line
   try:
     if cfg['verbose'] > 0:
       _log.setLevel(logging.DEBUG)
@@ -45,8 +45,16 @@ def load_config():
   return cfg
 
 def main():
+  # Parse input arguments
+  parser = argparse.ArgumentParser(
+      description="Photovoltaic Inverter Statistics Scanner and Uploader",
+      prog="pvstats",
+      usage="%(prog)s [options]")
+  parser.add_argument("--cfg", help="Configuration File", nargs=1, default="/etc/pvstats.conf")
+  args = parser.parse_args()
+
   # Initialise
-  cfg = load_config()
+  cfg = load_config(vars(args)['cfg'][0])
 
   # Get an PV inverter client
   inverter = PVInverterFactory(cfg['inverter']['model'], cfg['inverter'])
