@@ -74,6 +74,16 @@ Immediately  start the service via systemd
 sudo systemctl start pvstats.service
 ```
 
+## Docker
+
+To deploy a container:
+* Create a `pvstats.conf` based on `pvstats.conf.example`
+* Run the container with docker run
+
+```
+docker run -v /path/to/config:/config mpfl/pvstats
+```
+
 ## Built with help from the following projects
 
 * [Pymodbus](https://github.com/riptideio/pymodbus/) - Python Modbus client
@@ -91,6 +101,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors of README.md
 
 * **Paul Archer** - *Modified for pvstats* - [PVStats](https://github.com/ptarcher/pvstats)
+* **Matthias Liffers** - *Containerisation* - [PVStats](http://github.com/mpfl/)
 * **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/ptarcher/pvstats/contributors) who participated in this project.
