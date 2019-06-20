@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM python:2-alpine
 LABEL maintainer="Matthias Liffers <m@tthi.as>"
 
 VOLUME /config
