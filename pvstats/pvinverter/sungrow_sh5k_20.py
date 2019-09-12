@@ -50,7 +50,7 @@ _register_map = {
     13003: {'name': 'total_pv_energy_10',         'scale': Decimal('0.1'), 'units': 'Wh'},
     13005: {'name': 'daily_export_energy_10',     'scale': Decimal('0.1'), 'units': 'Wh'},
     13006: {'name': 'total_export_energy_10',     'scale': Decimal('0.1'), 'units': 'Wh'},
-    13008: {'name': 'load_power',                 'scale': Decimal('0.1'), 'units': 'W'},
+    13008: {'name': 'load_power',                 'scale': Decimal('1'), 'units': 'W'},
     13010: {'name': 'export_power',               'scale': Decimal('0.1'), 'units': 'W'},
     13011: {'name': 'grid_import_or_export',      'scale': Decimal('1'),   'units': '?'},
     13012: {'name': 'daily_charge_energy_10',     'scale': Decimal('0.1'), 'units': 'Wh'},
