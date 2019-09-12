@@ -113,6 +113,15 @@ class PVInverter_SunGrow_sh5k_20(BasePVInverter):
                                            self.registers['date_day'],    self.registers['date_hour'],
                                            self.registers['date_minute'], self.registers['date_second'])
 
+    floaty = {}
+    for key in self.registers.keys():
+      try:
+        floaty[key] = float(self.registers[key])
+      except:
+        floaty[key] = self.registers[key]
+    self.registers = floaty
+
+
   def _load_registers(self,func,start,count=100):
     try:
       if func == 'input':
@@ -135,7 +144,7 @@ class PVInverter_SunGrow_sh5k_20(BasePVInverter):
 
         if key in _register_map[func]:
           reg = _register_map[func][key]
-          self.registers[reg['name']] = float(val * reg['scale'])
+          self.registers[reg['name']] = val * reg['scale']
 
 
     except Exception as err:
