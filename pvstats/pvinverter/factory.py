@@ -53,7 +53,7 @@ def PVInverterFactory(model, cfg):
   elif (model == "sungrow-sg5ktl"):
     # Assume TCP
     return PVInverter_SunGrow(cfg)
-  elif (model == "sungrow-sh5-20"):
+  elif (model == "sungrow-sh5k-20"):
     # Assume TCP
     return PVInverter_SunGrow_sh5k_20(cfg)
   elif (model == "fronius"):
