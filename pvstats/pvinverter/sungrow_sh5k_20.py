@@ -23,6 +23,7 @@ from pymodbus.transaction import ModbusSocketFramer
 from pymodbus.exceptions import ModbusIOException
 from pymodbus.payload import BinaryPayloadDecoder
 from datetime import datetime
+from time import sleep
 
 import serial.rs485
 
@@ -107,6 +108,8 @@ class PVInverter_SunGrow_sh5k_20(BasePVInverter):
       for k in sorted(_register_map[func].keys()):
         group  = int(k) - int(k) % 100
         if (start < group):
+          # Wait 500ms between modbus reads as per https://c.tjhowse.com/misc/SolarInfo%20Logger%20User%20Manual.pdf page 89
+          sleep(0.5)
           self._load_registers(func, group, 100)
           start = group + 100
 
