@@ -84,9 +84,13 @@ _register_map = {
 class PVInverter_SunGrow_sh5k_20(BasePVInverter):
   def __init__(self, cfg, **kwargs):
     super(PVInverter_SunGrow_sh5k_20, self).__init__()
-    self.client = ModbusTcpClient(cfg['host'],               port=cfg['port'],
-                                  framer=ModbusSocketFramer, timeout=3,
-                                  RetryOnEmpty=True,         retries=3)
+    self.cfg = cfg
+    self.init_modbus_client()
+
+  def init_modbus_client(self):
+    self.client = ModbusTcpClient(self.cfg['host'],               port=self.cfg['port'],
+                                  framer=ModbusSocketFramer, timeout=5,
+                                  RetryOnEmpty=True,         retries=5)
 
   def connect(self):
     self.client.connect()
@@ -136,6 +140,7 @@ class PVInverter_SunGrow_sh5k_20(BasePVInverter):
 
       if isinstance(rq, ModbusIOException):
         _logger.error("Error: {}".format(rq))
+        self.init_modbus_client()
         raise Exception("ModbusIOException")
 
       for x in range(0, count):
