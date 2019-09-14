@@ -206,7 +206,7 @@ class PVInverter_SunGrow_sh5k_20(BasePVInverter):
         if key in _register_map[func]:
           reg = _register_map[func][key]
           self.registers[reg['name']] = val * reg['scale']
-          if reg['type'] == 'int16' and self.registers[reg['name']] > 2**15:
+          if reg['type'] == 'int16' and self.registers[reg['name']] >= 2**15:
             self.registers[reg['name']] -= 2**16
 
 
