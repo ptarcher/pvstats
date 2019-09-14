@@ -35,103 +35,103 @@ _logger = logging.getLogger(__name__)
 
 _register_map = {
   'input': {
-    5003:  {'name': 'daily_pv_power', 'scale': Decimal(100), 'units': 'W', 'type': 'uint16'}
-    5004:  {'name': 'lifetime_pv_power', 'scale': Decimal(1), 'units': 'kW', 'type': 'uint16'}
-    5008:  {'name': 'internal_temp', 'scale': Decimal('0.1'), 'units': 'C', 'type': 'uint16'}
-    5011:  {'name': 'pv1_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'}
-    5012:  {'name': 'pv1_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'}
-    5013:  {'name': 'pv2_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'}
-    5014:  {'name': 'pv2_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'}
-    5017:  {'name': 'total_pv_power', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    5019:  {'name': 'grid_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'}
-    5022:  {'name': 'inverter_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'}
-    5036:  {'name': 'grid_frequency', 'scale': Decimal('0.1'), 'units': 'Hz', 'type': 'uint16'}
-    13001: {'name': 'running_state', 'scale': Decimal('0.1'), 'units': '?', 'type': 'uint16'}
-    13002: {'name': 'daily_pv_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13003: {'name': 'total_pv_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13005: {'name': 'daily_export_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13006: {'name': 'total_export_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13008: {'name': 'load_power', 'scale': Decimal('1'), 'units': 'W', 'type': 'uint16'}
-    13010: {'name': 'export_power', 'scale': Decimal('1'), 'units': 'W', 'type': 'int16'}
-    13011: {'name': 'grid_import_or_export', 'scale': Decimal('1'), 'units': '?', 'type': 'uint16'}
-    13012: {'name': 'daily_charge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13013: {'name': 'total_charge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13015: {'name': 'co2_emission_reduction', 'scale': Decimal('0.1'), 'units': 'Kg CO2', 'type': 'uint16'}
-    13017: {'name': 'daily_use_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13018: {'name': 'total_use_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13020: {'name': 'battery_voltage_10', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'}
-    13021: {'name': 'battery_current_10', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'}
-    13022: {'name': 'battery_power', 'scale': Decimal('1'), 'units': 'W', 'type': 'uint16'}
-    13023: {'name': 'battery_level_10', 'scale': Decimal('0.1'), 'units': '%', 'type': 'uint16'}
-    13024: {'name': 'battery_health_10', 'scale': Decimal('0.1'), 'units': '%', 'type': 'uint16'}
-    13025: {'name': 'battery_temp_10', 'scale': Decimal('0.1'), 'units': '°C', 'type': 'uint16'}
-    13026: {'name': 'daily_discharge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13027: {'name': 'total_discharge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    13029: {'name': 'use_power', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'}
-    13031: {'name': 'inverter_current_10', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'}
-    13034: {'name': 'pv_power', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'}
+    5003:  {'name': 'daily_pv_power', 'scale': Decimal(100), 'units': 'W', 'type': 'uint16'},
+    5004:  {'name': 'lifetime_pv_power', 'scale': Decimal(1), 'units': 'kW', 'type': 'uint16'},
+    5008:  {'name': 'internal_temp', 'scale': Decimal('0.1'), 'units': 'C', 'type': 'uint16'},
+    5011:  {'name': 'pv1_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'},
+    5012:  {'name': 'pv1_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    5013:  {'name': 'pv2_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'},
+    5014:  {'name': 'pv2_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    5017:  {'name': 'total_pv_power', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    5019:  {'name': 'grid_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'},
+    5022:  {'name': 'inverter_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    5036:  {'name': 'grid_frequency', 'scale': Decimal('0.1'), 'units': 'Hz', 'type': 'uint16'},
+    13001: {'name': 'running_state', 'scale': Decimal('0.1'), 'units': '?', 'type': 'uint16'},
+    13002: {'name': 'daily_pv_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13003: {'name': 'total_pv_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13005: {'name': 'daily_export_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13006: {'name': 'total_export_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13008: {'name': 'load_power', 'scale': Decimal('1'), 'units': 'W', 'type': 'uint16'},
+    13010: {'name': 'export_power', 'scale': Decimal('1'), 'units': 'W', 'type': 'int16'},
+    13011: {'name': 'grid_import_or_export', 'scale': Decimal('1'), 'units': '?', 'type': 'int16'},
+    13012: {'name': 'daily_charge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13013: {'name': 'total_charge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13015: {'name': 'co2_emission_reduction', 'scale': Decimal('0.1'), 'units': 'Kg CO2', 'type': 'uint16'},
+    13017: {'name': 'daily_use_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13018: {'name': 'total_use_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13020: {'name': 'battery_voltage_10', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'},
+    13021: {'name': 'battery_current_10', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    13022: {'name': 'battery_power', 'scale': Decimal('1'), 'units': 'W', 'type': 'uint16'},
+    13023: {'name': 'battery_level_10', 'scale': Decimal('0.1'), 'units': '%', 'type': 'uint16'},
+    13024: {'name': 'battery_health_10', 'scale': Decimal('0.1'), 'units': '%', 'type': 'uint16'},
+    13025: {'name': 'battery_temp_10', 'scale': Decimal('0.1'), 'units': '°C', 'type': 'uint16'},
+    13026: {'name': 'daily_discharge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13027: {'name': 'total_discharge_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    13029: {'name': 'use_power', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'},
+    13031: {'name': 'inverter_current_10', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    13034: {'name': 'pv_power', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'},
     # TODO Work out what these mystery numbers are
-    5001:  {'name': 'mystery_5001', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    5006:  {'name': 'mystery_5006', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    5031:  {'name': 'mystery_5031', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    5033:  {'name': 'mystery_5033', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    5034:  {'name': 'mystery_5034', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    5035:  {'name': 'mystery_5035', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    13030: {'name': 'mystery_13030', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    13036: {'name': 'mystery_13036', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    13037: {'name': 'mystery_13037', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
+    5001:  {'name': 'mystery_5001', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    5006:  {'name': 'mystery_5006', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    5031:  {'name': 'mystery_5031', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    5033:  {'name': 'mystery_5033', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'},
+    5034:  {'name': 'mystery_5034', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'},
+    5035:  {'name': 'mystery_5035', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    13030: {'name': 'mystery_13030', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    13036: {'name': 'mystery_13036', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    13037: {'name': 'mystery_13037', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
     # These are always zero as far as I've seen
-    # 5000:  {'name': '5000', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5002:  {'name': '5002', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5005:  {'name': '5005', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5007:  {'name': '5007', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5009:  {'name': '5009', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5010:  {'name': '5010', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5015:  {'name': '5015', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5016:  {'name': '5016', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5018:  {'name': '5018', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5020:  {'name': '5020', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5021:  {'name': '5021', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5023:  {'name': '5023', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5024:  {'name': '5024', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5025:  {'name': '5025', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5026:  {'name': '5026', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5027:  {'name': '5027', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5028:  {'name': '5028', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5029:  {'name': '5029', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5030:  {'name': '5030', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5032:  {'name': '5032', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5037:  {'name': '5037', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5038:  {'name': '5038', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5039:  {'name': '5039', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5040:  {'name': '5040', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5041:  {'name': '5041', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5042:  {'name': '5042', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5043:  {'name': '5043', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5044:  {'name': '5044', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5045:  {'name': '5045', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5046:  {'name': '5046', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 5047:  {'name': '5047', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}
-    # 13004: {'name': '13004', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    # 13007: {'name': '13007', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    # 13009: {'name': '13009', 'scale': Decimal('1'), 'units': 'W', 'type': 'uint16'}
-    # 13014: {'name': '13014', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    # 13016: {'name': '13016', 'scale': Decimal('0.1'), 'units': 'Kg CO2', 'type': 'uint16'}
-    # 13019: {'name': '13019', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    # 13028: {'name': '13028', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'}
-    # 13032: {'name': '13032', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'}
-    # 13033: {'name': '13033', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'}
-    # 13035: {'name': '13035', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'}
-    # 13038: {'name': '13038', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'}
+    # 5000:  {'name': '5000', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5002:  {'name': '5002', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5005:  {'name': '5005', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5007:  {'name': '5007', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5009:  {'name': '5009', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5010:  {'name': '5010', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5015:  {'name': '5015', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5016:  {'name': '5016', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5018:  {'name': '5018', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5020:  {'name': '5020', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5021:  {'name': '5021', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5023:  {'name': '5023', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5024:  {'name': '5024', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5025:  {'name': '5025', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5026:  {'name': '5026', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5027:  {'name': '5027', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5028:  {'name': '5028', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5029:  {'name': '5029', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5030:  {'name': '5030', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5032:  {'name': '5032', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5037:  {'name': '5037', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5038:  {'name': '5038', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5039:  {'name': '5039', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5040:  {'name': '5040', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5041:  {'name': '5041', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5042:  {'name': '5042', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5043:  {'name': '5043', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5044:  {'name': '5044', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5045:  {'name': '5045', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5046:  {'name': '5046', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 5047:  {'name': '5047', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    # 13004: {'name': '13004', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    # 13007: {'name': '13007', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    # 13009: {'name': '13009', 'scale': Decimal('1'), 'units': 'W', 'type': 'uint16'},
+    # 13014: {'name': '13014', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    # 13016: {'name': '13016', 'scale': Decimal('0.1'), 'units': 'Kg CO2', 'type': 'uint16'},
+    # 13019: {'name': '13019', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    # 13028: {'name': '13028', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
+    # 13032: {'name': '13032', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    # 13033: {'name': '13033', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    # 13035: {'name': '13035', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'},
+    # 13038: {'name': '13038', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'},
   },
 
   'holding': {
-    5000:  {'name': 'date_year', 'scale': 1, 'units': 'year', 'type': 'uint16'}
-    5001:  {'name': 'date_month', 'scale': 1, 'units': 'month', 'type': 'uint16'}
-    5002:  {'name': 'date_day', 'scale': 1, 'units': 'day', 'type': 'uint16'}
-    5003:  {'name': 'date_hour', 'scale': 1, 'units': 'hour', 'type': 'uint16'}
-    5004:  {'name': 'date_minute', 'scale': 1, 'units': 'minute', 'type': 'uint16'}
-    5005:  {'name': 'date_second', 'scale': 1, 'units': 'second', 'type': 'uint16'}
+    5000:  {'name': 'date_year', 'scale': 1, 'units': 'year', 'type': 'uint16'},
+    5001:  {'name': 'date_month', 'scale': 1, 'units': 'month', 'type': 'uint16'},
+    5002:  {'name': 'date_day', 'scale': 1, 'units': 'day', 'type': 'uint16'},
+    5003:  {'name': 'date_hour', 'scale': 1, 'units': 'hour', 'type': 'uint16'},
+    5004:  {'name': 'date_minute', 'scale': 1, 'units': 'minute', 'type': 'uint16'},
+    5005:  {'name': 'date_second', 'scale': 1, 'units': 'second', 'type': 'uint16'},
   }
 }
 
