@@ -46,7 +46,7 @@ _register_map = {
     5019:  {'name': 'grid_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'},
     5022:  {'name': 'inverter_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
     5036:  {'name': 'grid_frequency', 'scale': Decimal('0.1'), 'units': 'Hz', 'type': 'uint16'},
-    13001: {'name': 'running_state', 'scale': Decimal('0.1'), 'units': '?', 'type': 'uint16'},
+    13001: {'name': 'running_state', 'scale': Decimal('1'), 'units': '?', 'type': 'uint16'},
     13002: {'name': 'daily_pv_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
     13003: {'name': 'total_pv_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
     13005: {'name': 'daily_export_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
