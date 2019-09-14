@@ -162,6 +162,7 @@ class PVInverter_SunGrow_sh5k_20(BasePVInverter):
         group  = int(k) - int(k) % 100
         if (start < group):
           # Wait 500ms between modbus reads as per https://c.tjhowse.com/misc/SolarInfo%20Logger%20User%20Manual.pdf page 89
+          # This isn't enough though. Sometimes the modbus minion doesn't respond inside the (current) five second timeout.
           sleep(0.5)
           self._load_registers(func, group, 100)
           start = group + 100
