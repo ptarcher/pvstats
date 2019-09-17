@@ -37,6 +37,7 @@ _register_map = {
   'input': {
     5003:  {'name': 'daily_pv_power', 'scale': Decimal(100), 'units': 'W', 'type': 'uint16'},
     5004:  {'name': 'lifetime_pv_power', 'scale': Decimal(1), 'units': 'kW', 'type': 'uint16'},
+    5006:  {'name': 'total_run_time', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
     5008:  {'name': 'internal_temp', 'scale': Decimal('0.1'), 'units': 'C', 'type': 'uint16'},
     5011:  {'name': 'pv1_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'},
     5012:  {'name': 'pv1_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
@@ -45,6 +46,7 @@ _register_map = {
     5017:  {'name': 'total_pv_power', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
     5019:  {'name': 'grid_voltage', 'scale': Decimal('0.1'), 'units': 'V', 'type': 'uint16'},
     5022:  {'name': 'inverter_current', 'scale': Decimal('0.1'), 'units': 'A', 'type': 'uint16'},
+    5031:  {'name': 'inverter_ac_output', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'}, # AKA "Active Power"?
     5036:  {'name': 'grid_frequency', 'scale': Decimal('0.1'), 'units': 'Hz', 'type': 'uint16'},
     13001: {'name': 'running_state', 'scale': Decimal('1'), 'units': '?', 'type': 'uint16'},
     13002: {'name': 'daily_pv_energy_10', 'scale': Decimal('0.1'), 'units': 'Wh', 'type': 'uint16'},
@@ -72,14 +74,12 @@ _register_map = {
     13034: {'name': 'pv_power', 'scale': Decimal('0.1'), 'units': 'W', 'type': 'uint16'},
     # TODO Work out what these mystery numbers are
     5001:  {'name': 'mystery_5001', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
-    5006:  {'name': 'mystery_5006', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
-    5031:  {'name': 'mystery_5031', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
-    5033:  {'name': 'mystery_5033', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'},
-    5034:  {'name': 'mystery_5034', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'},
-    5035:  {'name': 'mystery_5035', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
-    13030: {'name': 'mystery_13030', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
-    13036: {'name': 'mystery_13036', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
-    13037: {'name': 'mystery_13037', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
+    5033:  {'name': 'mystery_5033', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'}, # Possibly -100% to 100% ?
+    5034:  {'name': 'mystery_5034', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'}, # -1 to 0.
+    5035:  {'name': 'mystery_5035', 'scale': Decimal(1), 'units': 'W', 'type': 'int16'}, # -1000 to 1000. Possibly needs a 0.1 scale?
+    13030: {'name': 'mystery_13030', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}, # Constant 85
+    13036: {'name': 'mystery_13036', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}, # 0-15. Four-bit state? Possibly?
+    13037: {'name': 'mystery_13037', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'}, # Accumulates. Possibly total kWh consumed?
     # These are always zero as far as I've seen
     # 5000:  {'name': '5000', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
     # 5002:  {'name': '5002', 'scale': Decimal(1), 'units': 'W', 'type': 'uint16'},
