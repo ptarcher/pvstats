@@ -42,8 +42,10 @@ _register_map = {
     '5013':  {'name': 'pv2_voltage',       'scale': Decimal('0.1'), 'units': 'V'},
     '5014':  {'name': 'pv2_current',       'scale': Decimal('0.1'), 'units': 'A'},
     '5017':  {'name': 'total_pv_power',    'scale': Decimal(1),     'units': 'W'},
-    '5019':  {'name': 'grid_voltage',      'scale': Decimal('0.1'), 'units': 'V'},
-    '5022':  {'name': 'inverter_current',  'scale': Decimal('0.1'), 'units': 'A'},
+    '5019':  {'name': 'ac_voltage',        'scale': Decimal('0.1'), 'units': 'V'},
+    '5022':  {'name': 'ac_current',        'scale': Decimal('0.1'), 'units': 'A'},
+    '5031':  {'name': 'ac_active_power',   'scale': Decimal(1),     'units': 'W'},
+    '5035':  {'name': 'ac_power_factor',   'scale': Decimal(0.001), 'units': ''},
     '5036':  {'name': 'grid_frequency',    'scale': Decimal('0.1'), 'units': 'Hz'},
   },
 
