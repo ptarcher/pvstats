@@ -30,6 +30,18 @@ To install the PVStats via pip (Python Package Index)
 pip install pvstats
 ```
 
+### Building
+
+To build PVStats:
+
+First modify `pvstats.conf` with your inverter settings, and also pvoutput.org, MQTT or InfluxDB settings.
+
+```
+chmod +x setup.py
+./setup.py build
+sudo ./setup.py install
+```
+
 ### Running
 
 First modify `pvstats.conf` with your inverter settings, and also pvoutput.org, MQTT or InfluxDB settings

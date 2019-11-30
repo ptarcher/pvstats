@@ -29,7 +29,7 @@ _logger = logging.getLogger(__name__)
 class PVInverter_Solax(BasePVInverter):
   def __init__(self, cfg, **kwargs):
     self.url = "http://{}:{}/api/realTimeData.htm".format(cfg["host"],cfg["port"])
-    self.http_timeout_sec = cfg["http_timeout_sec"]
+    self.http_timeout_sec = cfg.get("http_timeout_sec", 10)
 
     
   def connect(self):
