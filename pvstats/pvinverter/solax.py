@@ -29,6 +29,7 @@ _logger = logging.getLogger(__name__)
 class PVInverter_Solax(BasePVInverter):
   def __init__(self, cfg, **kwargs):
     self.url = "http://{}:{}/api/realTimeData.htm".format(cfg["host"],cfg["port"])
+    self.http_timeout_sec = cfg["http_timeout_sec"]
 
     
   def connect(self):
@@ -40,7 +41,7 @@ class PVInverter_Solax(BasePVInverter):
   def read(self):
     """Reads the PV inverters status"""
 
-    response = urllib2.urlopen(self.url).read().decode("utf-8").replace(",,",",0,").replace(",,",",0,")
+    response = urllib2.urlopen(self.url, None, self.http_timeout_sec).read().decode("utf-8").replace(",,",",0,").replace(",,",",0,")
     data = json.loads(response)
     #print json.dumps(data, sort_keys=True, indent=2, separators=(',', ': '),default=str)
 

@@ -27,6 +27,7 @@ _logger = logging.getLogger(__name__)
 class PVInverter_Fronius(BasePVInverter):
   def __init__(self, cfg, **kwargs):
     self.url = "http://{}:{}/solar_api/v1/GetInverterRealtimeData.cgi?Scope=Device&DeviceID=1&DataCollection=CommonInverterData".format(cfg["host"],cfg["port"])
+    self.http_timeout_sec = cfg["http_timeout_sec"]
 
   def connect(self):
     pass
@@ -105,7 +106,7 @@ class PVInverter_Fronius(BasePVInverter):
 }
 """
 
-    response = urllib2.urlopen(self.url).read()
+    response = urllib2.urlopen(self.url, None, self.http_timeout_sec).read()
     data = json.loads(response)
     d = json.dumps(data, sort_keys=True, indent=2, separators=(',', ': '),default=str)
     print d

@@ -3,7 +3,8 @@
     "model":"sungrow-sg5ktl",
     "mode":"tcp",
     "host":"sungrow.example.com",
-    "port":502
+    "port":502,
+    "http_timeout_sec":5
   },
   "reports":[
     {
@@ -35,6 +36,7 @@
     }
   ],
 
+  "report_post_timeout_sec":20,
   "sample_period":10,
   "verbose":1
 }

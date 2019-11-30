@@ -43,7 +43,8 @@ class PVReport_pvoutput(BasePVOutput):
 
     self.client = PVOutputClient(cfg['host'],
                                  cfg['key'],
-                                 cfg['system_id'])
+                                 cfg['system_id'],
+                                 cfg['report_post_timeout_sec'])
 
   def publish(self, data):
     sample = {'date':             data['timestamp'].strftime("%Y%m%d"),
