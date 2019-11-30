@@ -3,7 +3,8 @@
     "model":"sungrow-sg5ktl",
     "mode":"tcp",
     "host":"sungrow.example.com",
-    "port":502
+    "port":502,
+    "http_timeout_sec":5
   },
   "reports":[
     {
@@ -11,7 +12,8 @@
       "host":"pvoutput.org",
       "rate_limit":"300",
       "key":"TODO",
-      "system_id":"TODO"
+      "system_id":"TODO",
+      "http_timeout_sec":20
     },
     {
       "type": "influxdb",
