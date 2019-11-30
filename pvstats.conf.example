@@ -12,7 +12,8 @@
       "host":"pvoutput.org",
       "rate_limit":"300",
       "key":"TODO",
-      "system_id":"TODO"
+      "system_id":"TODO",
+      "http_timeout_sec":20
     },
     {
       "type": "influxdb",
@@ -36,7 +37,6 @@
     }
   ],
 
-  "report_post_timeout_sec":20,
   "sample_period":10,
   "verbose":1
 }

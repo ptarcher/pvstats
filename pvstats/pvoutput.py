@@ -20,11 +20,11 @@ import urllib
 import httplib
 
 class PVOutputClient():
-	def __init__(self, host, api_key, system_id, report_post_timeout_sec):
+	def __init__(self, host, api_key, system_id, http_timeout_sec):
 		self.host = host
 		self.api_key = api_key
 		self.system_id = system_id
-                self.post_timeout_sec = report_post_timeout_sec
+                self.http_timeout_sec = http_timeout_sec
 
 	def add_output(self, date, generated, exported=None, peak_power=None, peak_time=None, condition=None,
 			min_temperature=None, max_temperature=None, comments=None, import_peak=None, import_offpeak=None, import_shoulder=None):
@@ -141,7 +141,7 @@ class PVOutputClient():
 		return response.read()
 
 	def make_request(self, method, path, params=None):
-		conn = httplib.HTTPConnection(self.host, timeout = self.post_timeout_sec)
+		conn = httplib.HTTPConnection(self.host, timeout = self.http_timeout_sec)
 		headers = {
 				'Content-type': 'application/x-www-form-urlencoded',
 				'Accept': 'text/plain',
