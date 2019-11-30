@@ -47,8 +47,22 @@ sudo ./setup.py install
 First modify `pvstats.conf` with your inverter settings, and also pvoutput.org, MQTT or InfluxDB settings
 
 ```
-/usr/bin/pvstats -f pvstats.conf
+/usr/bin/pvstats --cfg pvstats.conf
 ```
+
+### Configuration
+
+Inverter model codes currently usable in the configuration are:
+
+* solax
+* fronius
+* sungrow-sg5ktl
+
+Remove from the configuration any reporting endpoints that are not applicable.
+
+Solax and Fronius use HTTP calls to retrieve data. If you have an unstable connection and need to modify request timeout values, you can modify the 'http_timeout_sec' parameter for the inverter.
+
+Similarly you can do the same for the 'pvoutput' report type when POSTing your PV request data.
 
 ## Running the tests
 
