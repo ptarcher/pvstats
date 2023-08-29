@@ -16,9 +16,10 @@
 
 from pvstats.pvinverter.base import BasePVInverter
 
-from pymodbus.constants import Defaults
-from pymodbus.client.sync import ModbusTcpClient
-from pymodbus.client.sync import ModbusSerialClient
+#from pymodbus.constants import Defaults
+import pymodbus.constants
+from pymodbus.client import ModbusTcpClient
+from pymodbus.client import ModbusSerialClient
 from pymodbus.transaction import ModbusSocketFramer
 from pymodbus.exceptions import ModbusIOException
 from pymodbus.payload import BinaryPayloadDecoder

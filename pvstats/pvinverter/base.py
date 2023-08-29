@@ -16,8 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from pymodbus.constants import Defaults
-from pymodbus.client.sync import ModbusTcpClient
+#from pymodbus.constants import Defaults
+import pymodbus.constants
+from pymodbus.client import ModbusTcpClient
 from pymodbus.transaction import ModbusSocketFramer
 
 class BasePVInverter(object):

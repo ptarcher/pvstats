@@ -19,8 +19,9 @@
 from datetime import datetime
 from decimal import *
 
-from pymodbus.constants import Defaults
-from pymodbus.client.sync import ModbusTcpClient
+#from pymodbus.constants import Defaults
+import pymodbus.constants
+from pymodbus.client import ModbusTcpClient
 from pymodbus.transaction import ModbusSocketFramer
 
 from pvstats.pvinverter.fronius import PVInverter_Fronius
